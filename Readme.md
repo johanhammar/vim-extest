@@ -19,7 +19,7 @@ By default extest.vim doesn't bind to any keys but is available in the form of c
 
 * `:ExTestRunFile` runs all the tests in the file that is loaded into the current buffer
 * `:ExTestRunTest` runs the test case under the cursor
-* `:ExTestRunElixir` runs all the tests in the file that is loaded into the current buffer except it is not using Mix but Elixir directly
+* `:ExTestRunCustom` runs a custom command. Defaults to 'elixir %f' 
 * `:ExTestRunLast` runs the last test, from any buffer
 
 If you want to bind those commands to your leader keys, you can do so nevertheless. For example:
@@ -27,7 +27,7 @@ If you want to bind those commands to your leader keys, you can do so neverthele
 ```vim
 map <leader>T :ExTestRunFile<CR>
 map <leader>t :ExTestRunMethod<CR>
-map <leader>te :ExTestRunElixir<CR>
+map <leader>te :ExTestRunCustom<CR>
 map <leader>lt :ExTestRunLast<CR>
 ```
 
@@ -37,7 +37,7 @@ You can customize the command which will be used to run each test by setting the
 ```vim
 let g:extest_exunit_run_file_cmd = "mix test '%f'"
 let g:extest_exunit_run_test_cmd = "mix test '%f'"
-let g:extest_exunit_run_elixir_cmd = "elixir '%f'"
+let g:extest_exunit_run_custom_cmd = "elixir '%f'"
 let g:extest_amrita_run_file_cmd = "mix amrita '%f'"
 let g:extest_amrita_run_test_cmd = "mix amrita '%f:%l'"
 ```

@@ -30,8 +30,8 @@ endif
 if !exists("g:extest_exunit_run_test_cmd")
   let g:extest_exunit_run_test_cmd = "mix test '%f'"
 endif
-if !exists("g:extest_exunit_run_elixir_cmd")
-  let g:extest_exunit_run_elixir_cmd = "elixir '%f'"
+if !exists("g:extest_exunit_run_custom_cmd")
+  let g:extest_exunit_run_custom_cmd = "elixir '%f'"
 endif
 if !exists("g:extest_amrita_run_file_cmd")
   let g:extest_amrita_run_file_cmd = "mix amrita '%f'"
@@ -43,7 +43,7 @@ endif
 " Exported commands
 command ExTestRunFile   call <SID>RunFile()
 command ExTestRunTest   call <SID>RunTest()
-command ExTestRunElixir call <SID>RunElixir()
+command ExTestRunCustom call <SID>RunCustom()
 command ExTestRunLast   call <SID>RunLast()
 
 function s:RunFile()
@@ -54,8 +54,8 @@ function s:RunTest()
   return s:ExecTestRun("test")
 endfunction
 
-function s:RunElixir()
-  return s:ExecTestRun("elixir")
+function s:RunCustom()
+  return s:ExecTestRun("custom")
 endfunction
 
 function s:RunLast()
@@ -68,7 +68,7 @@ function s:RunLast()
 endfunction
 
 " Starts a test run.
-" @param type ["test" | "file" | "elixir"]
+" @param type ["test" | "file" | "custom"]
 function s:ExecTestRun(type)
   let l:framework = s:IdentifyFramework()
 
